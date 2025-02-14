@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyPorto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function toggleMenu() {
+            document.getElementById("menu").classList.toggle("hidden");
+        }
+
+        let slideIndex = 0;
+        const images = [
+            'assets/1.jpg',
+            'assets/2.jpg',
+            'assets/3.jpg'
+        ];
+
+        function showSlide(index) {
+            slideIndex = (index + images.length) % images.length;
+            document.getElementById("hero-section").style.backgroundImage = `url(${images[slideIndex]})`;
+        }
+
+        function nextSlide() {
+            showSlide(slideIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(slideIndex - 1);
+        }
+
+        setInterval(nextSlide, 3000);
+
+        // Open the login modal
+        function openLoginModal() {
+            document.getElementById('login-modal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden'); // Disable body scroll
+        }
+
+        // Close the login modal
+        function closeLoginModal() {
+            document.getElementById('login-modal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden'); // Enable body scroll
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+    
+    <!-- Navbar -->
+    <nav class="fixed top-4 left-1/2 transform -translate-x-1/2 w-full md:w-3/4 bg-white bg-opacity-50 backdrop-blur-md text-white p-4 rounded-full shadow-lg z-50 flex items-center space-x-4">
+        <!-- Gambar Foto Profil -->
+        <img src="assets/pp.jpg" alt="Logo" class="w-12 h-12 rounded-full object-cover">
+
+        <!-- Search Engine -->
+        <input type="text" placeholder="Search..." class="flex-grow px-4 py-2 border border-gray-300 rounded-full bg-transparent text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+        <!-- Menu -->
+        <div class="hidden md:flex items-center space-x-4 text-gray-900">
+            <a href="#" class="hover:underline">Home</a>
+            <a href="#projects" class="hover:underline">Project</a>
+            <a href="#contact" class="hover:underline">Contact</a>
+            <a href="#about" class="hover:underline">Profile</a>
+            <a href="javascript:void(0);" onclick="openLoginModal()" class="hover:underline text-gray-900 py-2 px-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300">Log in</a>
+        </div>
+
+        <button class="md:hidden" onclick="toggleMenu()">
+            <svg class="w-6 h-6 text-gray-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero-section" class="relative flex flex-col justify-center items-center h-screen text-white bg-cover bg-center transition-all duration-500" style="background-image: url('assets/1.jpg');">
+        <div class="relative z-10 text-center px-6 md:px-12">
+            <h2 class="text-5xl font-bold leading-tight mb-4">Selamat Datang di Website Saya</h2>
+            <p class="text-xl mb-6">Temukan berbagai informasi dan proyek terbaru yang saya kerjakan.</p>
+            <a href="#projects" class="bg-blue-600 hover:bg-blue-700 text-white text-lg font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:scale-105">Lihat Proyek Saya</a>
+        </div>
+        <!-- Previous Slide Button -->
+<button onclick="prevSlide()" class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full">
+    <!-- Ikon panah kiri menggunakan Heroicons -->
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+      </svg>      
+</button>
+
+<!-- Next Slide Button -->
+<button onclick="nextSlide()" class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-gray-800 bg-opacity-50 text-white p-2 rounded-full">
+    <!-- Ikon panah kanan menggunakan Heroicons -->
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+      </svg>      
+</button>          
+    </header>
+
+    <!-- Perkenalan -->
+    <section id="about" class="h-screen flex flex-col md:flex-row items-center container mx-auto px-6 py-12">
+        <div class="md:w-1/2 text-center md:text-left mb-6 md:mb-0">
+            <h2 class="text-3xl font-bold text-gray-900">Tentang Saya</h2>
+            <p class="mt-4 text-gray-700 text-lg">Saya, Sahrul Suwandi, adalah seorang mahasiswa Teknik Informatika dengan minat dalam dunia teknologi, pemrograman, dan eksplorasi alam. Saya memiliki ketertarikan dalam pengembangan perangkat lunak, pemecahan masalah teknologi, dan inovasi digital.</p>
+            <p class="mt-4 text-gray-700 text-lg">Selain mendalami dunia teknologi, saya juga memiliki hobi mendaki, yang mengajarkan saya tentang ketahanan, strategi, dan eksplorasi—kualitas yang saya terapkan dalam setiap tantangan akademik dan profesional.</p>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+            <img src="assets/profile.jpg" alt="Foto Saya" class="rounded-full shadow-lg w-64 h-64 object-cover border-4 border-gray-300">
+        </div>
+    </section>
+
+    <!-- View Riwayat Project -->
+    <section id="projects" class="h-screen flex flex-col justify-center container mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-8">Riwayat Project</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 shadow rounded-lg">
+                <img src="https://via.placeholder.com/300" alt="Project 1" class="rounded-lg mb-4 w-full">
+                <h3 class="text-xl font-semibold">Project 1</h3>
+                <p class="mt-2 text-gray-700">Deskripsi singkat tentang proyek ini.</p>
+            </div>
+            <div class="bg-white p-6 shadow rounded-lg">
+                <img src="https://via.placeholder.com/300" alt="Project 2" class="rounded-lg mb-4 w-full">
+                <h3 class="text-xl font-semibold">Project 2</h3>
+                <p class="mt-2 text-gray-700">Deskripsi singkat tentang proyek ini.</p>
+            </div>
+            <div class="bg-white p-6 shadow rounded-lg">
+                <img src="https://via.placeholder.com/300" alt="Project 3" class="rounded-lg mb-4 w-full">
+                <h3 class="text-xl font-semibold">Project 3</h3>
+                <p class="mt-2 text-gray-700">Deskripsi singkat tentang proyek ini.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-4">
+        <p>&copy; 2025 MyWebsite. All rights reserved.</p>
+    </footer>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50 z-50  backdrop-blur-md">
+        <div class="bg-white backdrop-blur-md rounded-lg p-8 w-96">
+            <div id="login-form">
+                <h2 class="text-2xl font-semibold text-center mb-4">Log In</h2>
+                <form action="#" method="POST">
+                    <div class="mb-4">
+                        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+                        <input type="text" id="username" name="username" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" id="password" name="password" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 focus:outline-none">Log In</button>
+                </form>
+                <div class="mt-4 text-center">
+                    <p class="text-sm">Don't have an account? <a href="javascript:void(0);" onclick="toggleForm()" class="text-blue-500 hover:underline">Sign Up</a></p>
+                </div>
+            </div>
+
+            <div id="signup-form" class="hidden">
+                <h2 class="text-2xl font-semibold text-center mb-4">Sign Up</h2>
+                <form action="#" method="POST">
+                    <div class="mb-4">
+                        <label for="new-username" class="block text-sm font-medium text-gray-700">Username</label>
+                        <input type="text" id="new-username" name="username" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="new-email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="new-email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="new-password" class="block text-sm font-medium text-gray-700">Password</label>
+                        <input type="password" id="new-password" name="password" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 focus:outline-none">Sign Up</button>
+                </form>
+                <div class="mt-4 text-center">
+                    <p class="text-sm">Already have an account? <a href="javascript:void(0);" onclick="toggleForm()" class="text-blue-500 hover:underline">Log In</a></p>
+                </div>
+            </div>
+            
+            <button onclick="closeLoginModal()" class="absolute top-2 right-2 text-gray-600 hover:text-gray-900 font-semibold text-xl">&times;</button>
+        </div>
+    </div>
+</body>
+</html>
